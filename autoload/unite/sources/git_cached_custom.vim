@@ -32,7 +32,7 @@ let s:source = {
 function! s:source.gather_candidates(args, context)
     let kind = unite_git_util#get_kind()
     let result1 = unite#util#system('git ls-files; git submodule foreach git ls-files')
-    let result2 = unite#util#system('git submodule foreach ''git ls-files | sed "s/^/$path/"''')
+    let result2 = unite#util#system('git submodule foreach ''git ls-files | sed "s/^/$path\//"''')
     let result  = result1 . '\n' . result2
     if unite#util#get_last_status() == 0
         return has('lua') ?
